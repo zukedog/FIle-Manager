@@ -1,0 +1,13 @@
+/* CSS Document */
+
+ul{
+	list-style-type: none;
+}
+
+li > ul{
+	display: none;
+}
+
+input:checked ~ ul{
+	display: inherit;
+}
