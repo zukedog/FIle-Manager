@@ -7,42 +7,20 @@
 	<script src="jquery-3.3.1.min.js"></script>
 	<script src="jszip.min.js"></script>
 	<script src="script.js"></script>
-	<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="style.css">
+
 <title>File Tree</title>
 </head>
 
 <body>
-	<style>
-  input[type=checkbox] {
-    display:none;
-  }
- 
-  input[type=checkbox] + label
-   {
-       background-image: url(arrowRight.svg);
-       height: 16px;
-       width: 16px;
-       display:inline-block;
-       padding: 0 0 0 0px;
-   }
-   
-   input[type=checkbox]:checked + label
-    {
-        background-image: url(arrowDown.svg);
-        height: 16px;
-        width: 16px;
-        display:inline-block;
-        padding: 0 0 0 0px;
-    }
-	</style>
+
 	<ul>
-		<li><input type='checkbox' name='thing' value='valuable1' id="thing1" data-bind="checked: chk"/><label for="thing1"></label><label for="thing1"> Josh</label><ul><li><input type='checkbox' name='thing' value='valuable1' id="thing2" data-bind="checked: chk"/><label for="thing2"></label><label for="thing2"> Josh Child</label> <ul><li>File</li><li>File</li><li>File</li><li>File</li></ul></li></ul></li>
+		<li><input type='checkbox' name='thing' value='valuable1' id="thing1"/><label for="thing1"></label><label for="thing1">Josh</label><ul><li><input type='checkbox' name='thing' value='valuable1' id="thing2"/><label for="thing2"></label><label for="thing2">Josh Child</label> <ul><li>File</li><li>File</li><li>File</li><li>File</li></ul></li></ul></li>
 		<li>Josh</li>
 		<li>Josh</li>
 		<li>Josh</li>
 	
 	</ul>
-<img src="arrowDown.svg" alt="">
-<img src="arrowRight.svg" alt="">
+
 </body>
 </html>

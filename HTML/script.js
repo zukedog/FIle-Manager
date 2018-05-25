@@ -15,8 +15,8 @@ console.log(zip);
 zip.forEach(function(stuffs){
 	console.log(stuffs);
 });
-*/
 
+*/
 $("li").on("click", function(e){
 	$(e).children(":checkbox").first().hide();
 });
