@@ -46,3 +46,9 @@ me.addItem("dir");
 me.addItem("file");
 console.log(me);
 
+
+$(document).ready(function(){
+
+	
+	
+});

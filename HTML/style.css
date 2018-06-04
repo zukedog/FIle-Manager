@@ -1,22 +1,31 @@
-/* CSS Document */
-
-ul {
-	list-style-type: none;
+*{
+	user-select: none;
+	-moz-user-select: none;
+	-webkit-user-select: none;
 }
+
 
 li > ul {
 	display: none;
 }
 
-input:checked ~ ul {
+input.arrow:checked ~ ul {
 	display: inherit;
 }
 
-input[type=checkbox] {
+
+
+
+ul {
+	list-style-type: none;
+}
+
+input[type=checkbox],input[type=checkbox] {
 	display: none;
 }
 
-input[type=checkbox] + label {
+
+input[type=checkbox].arrow + label {
 	background-image: url(arrowRight.svg);
 	height: 16px;
 	width: 16px;
@@ -24,13 +33,28 @@ input[type=checkbox] + label {
 	padding: 0 0 0 0px;
 }
 
-input[type=checkbox]:checked + label {
+input[type=checkbox].arrow:checked + label {
 	background-image: url(arrowDown.svg);
-	height: 16px;
-	display: inline-block;
-	padding: 0 0 0 0px;
 }
 
+input[type=checkbox].file + label {
+	background-image: url(file.png);
+	background-size: contain;
+	background-repeat: no-repeat;
+	height: 16px;
+	display: inline-block;
+	padding: 0 0 0 20px;
+	margin: 0 0 0 5px;
+}
+input[type=checkbox].file[data-type=dir] + label{
+	background-image: url(folder.png);
+}
+
+input[type=checkbox].file:checked + label {
+	background-color: lightgray;
+	color: black;
+}
+/*
 input[type=checkbox] + label + label{
 	background-image: url(folder.png);
 	background-size: contain;
@@ -40,3 +64,4 @@ input[type=checkbox] + label + label{
 	padding: 0 0 0 20px;
 	margin: 0 0 0 5px;
 }
+*/
