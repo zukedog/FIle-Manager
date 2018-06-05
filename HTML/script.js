@@ -34,18 +34,20 @@ function item(type, name, contents) {
 		this.addItem = function (type, name, contents) {
 			this.contents.push(new item(type, name, contents));
 		}
-		this.getContents = function () {
-			var cont = "";
-
-			for (var i = 0; i < this.contents.length; i++) {
-				cont += this.contents[i].html();
-			}
-			return cont;
-		};
+		for(var i=0; i<this.contents.length; i++){
+			this.contents[i] = new item(this.contents[i].type, this.contents[i].name, this.contents[i].contents);
+		}
 	} else {
 		this.contents = contents || "";
 	}
-
+	this.getContents = function () {
+		var cont = "";
+		console.log(this.type);
+		for (var i = 0; i < this.contents.length; i++) {
+			cont += this.contents[i].html();
+		}
+		return cont;
+	};
 	this.html = function () {
 		if (this.type == "dir") {
 			return `<li>
@@ -58,17 +60,20 @@ function item(type, name, contents) {
 		}
 		return `<li><input type='checkbox' name='file' value='none' id="file${this.ID}" class="file" data-type="${this.type}"/><label for="file${this.ID}">${this.name}</label></li>`
 	};
-	
+
 }
 
 
-var me = new item("dir","grandfather");
-me.addItem("dir","father");
-me.addItem("file","son");
+var me = new item("dir", "grandfather");
+me.addItem("dir", "father");
+me.addItem("file", "son");
 console.log(me);
 
 
-
+myJSON = JSON.stringify(me);
+newObj = JSON.parse(myJSON);
+me = new item(newObj.type, newObj.name, newObj.contents);
+console.log(me);
 
 
 
