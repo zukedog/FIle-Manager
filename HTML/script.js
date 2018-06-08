@@ -17,6 +17,15 @@ zip.forEach(function(stuffs){
 });
 
 */
+
+function download(zip, name){
+	zip.generateAsync({type:"blob"})
+.then(function (blob) {
+    saveAs(blob, name+".zip");
+});
+	
+}
+
 $("li").on("click", function (e) {
 	$(e).children(":checkbox").first().hide();
 });
@@ -48,6 +57,26 @@ function item(type, name, contents) {
 		}
 		return cont;
 	};
+	this.processDir = function(data, parent){
+		for(var i=0; i<data.length; i++){
+			if(data[i].type=="dir"){
+				this.processDir(data[i].contents, parent.folder(data[i].name));
+			}
+			else{
+				parent.file(data[i].name, data[i].contents);
+			}
+		}
+	};
+	this.download = function(){
+		var zip = new JSZip()
+		if (this.type=="dir"){
+			this.processDir(this.contents, zip);
+		}else{
+			zip.file(this.name, this.contents);
+		}
+		download(zip, this.name);
+		
+	};
 	this.html = function () {
 		if (this.type == "dir") {
 			return `<li>
@@ -74,6 +103,7 @@ myJSON = JSON.stringify(me);
 newObj = JSON.parse(myJSON);
 me = new item(newObj.type, newObj.name, newObj.contents);
 console.log(me);
+me.download();
 
 
 
